@@ -32,7 +32,11 @@ public class AccountController : ControllerBase
         var account = await _accountRepository.GetById(id, cancellationToken);
         return account;
     }
-
+    [HttpGet]
+    [Route("get_by_email/{email}")]
+    public Task<Account> GetAccountByEmail(string email)
+        => _repo.GetByEmail(email);
+    
     [HttpPost]
     [Route("add")]
     [AllowAnonymous]
@@ -41,8 +45,15 @@ public class AccountController : ControllerBase
         await _accountRepository.Add(account, cancellationToken);
     }
 
-    [HttpGet]
-    [Route("get_by_email/{email}")]
-    public Task<Account> GetAccountByEmail(string email)
-        => _repo.GetByEmail(email);
+    [HttpPut("update")]
+    public async Task Edit([FromBody] Account account, CancellationToken cancellationToken)
+    {
+        await _accountRepository.Update(account, cancellationToken);
+    }
+
+    [HttpPost("delete")]
+    public async Task DeleteProduct([FromBody] Account account, CancellationToken cancellationToken)
+    {
+        await _accountRepository.Delete(account, cancellationToken);
+    }
 }
