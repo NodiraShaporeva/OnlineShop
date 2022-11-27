@@ -52,7 +52,7 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost("delete")]
-    public async Task DeleteProduct([FromBody] Account account, CancellationToken cancellationToken)
+    public async Task DeleteAccount([FromBody] Account account, CancellationToken cancellationToken)
     {
         await _accountRepository.Delete(account, cancellationToken);
     }
