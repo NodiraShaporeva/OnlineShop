@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2dd63091_002Db3cf_002D4089_002Db10b_002D5471ae3a40be/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="One_product_added_to_catalog" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::9BD6C174-2FE0-4426-97BB-513BE4CC16E1::net6.0::HttpApiClient.Tests.ProductApiTests.One_product_added_to_catalog&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f3d0e8b1_002D4d04_002D4340_002Db9f5_002Da545f73d762c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="One_product_added_to_catalog #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::9BD6C174-2FE0-4426-97BB-513BE4CC16E1::net6.0::HttpApiClient.Tests.ProductApiTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

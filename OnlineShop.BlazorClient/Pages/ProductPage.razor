@@ -1,0 +1,18 @@
+@page "/get_products"
+
+@using OnlineShop.Models
+@using OnlineShop.HttpApiClient
+
+@inject IShopClient ShopClient
+
+<ProductList Products="Products" DisplayBuyButton="true"></ProductList>
+
+@code {
+    private IReadOnlyList<Product> Products { get; set; } = new List<Product>();
+
+    protected async Task OnInitializedAsync(CancellationToken cancellationToken = default)
+    {
+        await base.OnInitializedAsync();
+        Products = await ShopClient.GetProducts(cancellationToken);
+    }
+}

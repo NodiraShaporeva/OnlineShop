@@ -1,0 +1,71 @@
+@page "/checkout"
+
+@using Microsoft.AspNetCore.Components
+@using OnlineShop.BlazorClient.Services
+
+@inject IJSRuntime JsRuntime
+@inject IToastService ToastService
+@inject CartService CartService
+
+<PageTitle>Checkout</PageTitle>
+
+<ProductList Products="CartService.SelectedItems"></ProductList>
+
+<h3>У вас в корзине: @CartService.SelectedItems.Count позиция(и)</h3>
+
+<EditForm class="vstack gap-3" Model="CheckoutForm" OnValidSubmit="SubmitAsync">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div>
+        <label class="form-label" for="name">Имя:</label>
+        <InputText id="name" class="form-control" @bind-Value="CheckoutForm.Name"></InputText>
+        <ValidationMessage class="form-control" For="() => CheckoutForm.Name"></ValidationMessage>
+    </div>
+
+    <div>
+        <label class="form-label" for="address">Адрес:</label>
+        <InputText id="address" class="form-control" @bind-Value="CheckoutForm.Address"></InputText>
+        <ValidationMessage class="form-control" For="() => CheckoutForm.Address"></ValidationMessage>
+    </div>
+
+    <div>
+        <button class="btn btn-primary" type="submit">Купить</button>
+
+        <button class="btn btn-primary"
+                type="button"
+                @onclick=
+                "Clear">
+            Очистить корзину
+        </button>
+    </div>
+</EditForm>
+
+@code {
+    private CheckoutForm CheckoutForm { get; set; } = new();
+
+    private async Task SubmitAsync()
+    {
+        await JsRuntime.InvokeVoidAsync(
+            "alert",
+            $"Спасибо {CheckoutForm.Name}, мы доставим ваш товар по адресу: {CheckoutForm.Address}."
+            );
+    }
+
+    /*
+    private void Delete(Guid productId)
+    {
+        CartService.DeleteProductFromCart(productId);
+        ToastService.ShowInfo($"Удаляем товар из корзины: {productId}", "Удалено");
+    }
+*/
+
+    private void Clear()
+    {
+        ToastService.ShowInfo($"Очищаем корзину", "Очищено");
+
+        while (CartService.SelectedItems.Count > 0)
+        {
+            CartService.DeleteProductFromCart(CartService.SelectedItems[0]);
+        }
+    }
+
+}
