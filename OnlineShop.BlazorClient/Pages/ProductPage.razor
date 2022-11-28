@@ -1,4 +1,4 @@
-@page "/get_products"
+@page "/products/get_all"
 
 @using OnlineShop.Models
 @using OnlineShop.HttpApiClient
@@ -10,9 +10,10 @@
 @code {
     private IReadOnlyList<Product> Products { get; set; } = new List<Product>();
 
-    protected async Task OnInitializedAsync(CancellationToken cancellationToken = default)
+    protected override async Task<IReadOnlyList<Product>> OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        Products = await ShopClient.GetProducts(cancellationToken);
+        Products = await ShopClient.GetProducts();
+        return Products;
     }
 }

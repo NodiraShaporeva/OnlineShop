@@ -1,7 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
+//using Microsoft.AspNetCore.Mvc;
+//using OnlineShop.Models;
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Models;
-using OnlineShop.WebApi.Data;
+using OnlineShop.Data;
+using OnlineShop.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
-builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+//builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
 var dbPath = "myapp.db";
 
@@ -21,7 +22,7 @@ builder.Services.AddDbContext<AppDbContext>
 var app = builder.Build();
 
 app.MapControllers();
-
+/*
 app.MapGet("/get_all", async (
         [FromServices] IRepository<IEntity> repo,
         CancellationToken cancellationToken)
@@ -67,7 +68,7 @@ app.MapDelete("/delete", async (
 {
     await repo.Delete(product, cancellationToken);
 });
-
+*/
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -77,10 +78,10 @@ if (app.Environment.IsDevelopment())
 app.UseCors(policy =>
 {
     policy
-        .WithOrigins("https://localhost:7258")
+        //.WithOrigins("https://localhost:7258")
         .AllowAnyMethod()
         .AllowAnyHeader()
-        //.AllowAnyOrigin()
+        .AllowAnyOrigin()
         ;
 });
 

@@ -75,23 +75,24 @@ public class ShopClientFake: IShopClient
         return Task.FromResult((IReadOnlyList<Product>)collection);
     }
 
-    public Task AddProduct(Product? product)
+    public Task AddProduct(Product product, CancellationToken cancellationToken = default)
     {
-        if (product != null) _products.TryAdd(product.Id, product);
+        if (product == null) throw new ArgumentNullException(nameof(product));
+        _products.TryAdd(product.Id, product);
         return Task.CompletedTask;
     }
 
-    public Task<Product?> GetProduct(Guid id)
+    public Task<Product?> GetProduct(Guid id, CancellationToken cancellationToken = default)
     {
         return Task.FromResult(_products[id]);
     }
 
-    public Task UpdateProduct(Product newProduct, Guid id)
+    public Task UpdateProduct(Product newProduct, Guid id, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task DeleteProduct(Guid id)
+    public Task DeleteProduct(Guid id, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

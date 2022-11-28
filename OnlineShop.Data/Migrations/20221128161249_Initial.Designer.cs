@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OnlineShop.WebApi.Data;
+using OnlineShop.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace OnlineShop.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221125223747_Account")]
-    partial class Account
+    [Migration("20221128161249_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
