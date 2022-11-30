@@ -4,7 +4,6 @@ using Blazored.Toast;
 using OnlineShop.BlazorClient.Services;
 using OnlineShop.BlazorClient;
 using OnlineShop.HttpApiClient;
-using OnlineShop.HttpApiClient.Fake;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -17,5 +16,6 @@ builder.Services.AddSingleton<IShopClient>(new ShopClient());
 //builder.Services.AddSingleton<IShopClient>(new ShopClientFake());
 builder.Services.AddScoped<CartService>();
 builder.Services.AddBlazoredToast();
+builder.Services.AddAuthorizationCore();
 
 await builder.Build().RunAsync();

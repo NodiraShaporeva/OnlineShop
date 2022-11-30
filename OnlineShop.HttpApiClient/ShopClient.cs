@@ -1,6 +1,5 @@
 ﻿#nullable enable
 using System.Net.Http.Json;
-using System.Text.Json;
 using OnlineShop.Models;
 
 namespace OnlineShop.HttpApiClient
