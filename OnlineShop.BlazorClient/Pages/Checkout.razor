@@ -50,14 +50,6 @@
             );
     }
 
-    /*
-    private void Delete(Guid productId)
-    {
-        CartService.DeleteProductFromCart(productId);
-        ToastService.ShowInfo($"Удаляем товар из корзины: {productId}", "Удалено");
-    }
-*/
-
     private void Clear()
     {
         ToastService.ShowInfo($"Очищаем корзину", "Очищено");
@@ -67,5 +59,4 @@
             CartService.DeleteProductFromCart(CartService.SelectedItems[0]);
         }
     }
-
 }

@@ -22,12 +22,7 @@ public class CartService
             SelectedItems.Add(product);
         }
     }
-    /*
-    public void DeleteProductFromCart(string productName)
-    {
-        DeleteProductFromCart(_shopClient.GetProductByName(productName));
-    }
-    */
+
     public async Task DeleteProductFromCart(Guid productId)
     {
         DeleteProductFromCart(await _shopClient.GetProduct(productId));
