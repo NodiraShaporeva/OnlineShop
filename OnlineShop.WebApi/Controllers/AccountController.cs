@@ -21,24 +21,28 @@ public class AccountController : ControllerBase
     [AllowAnonymous]
     public ActionResult<Account> AddAccount(Account account, CancellationToken cancellationToken = default)
     {
-        var acnt = _repo.Add(account, cancellationToken);
         if (account == null) throw new ArgumentNullException(nameof(account));
         if (string.IsNullOrWhiteSpace(account.Name))
         {
-            return new ObjectResult(acnt)
-            {
-                DeclaredType = typeof(Account),
-                StatusCode = StatusCodes.Status400BadRequest
-            };
+            ModelState.AddModelError("Name", "Name is not valid");
+            return BadRequest(ModelState);
         }
+
         if (string.IsNullOrWhiteSpace(account.Password) || account.Password.Length < 6)
         {
-            return new ObjectResult(acnt)
-            {
-                DeclaredType = typeof(Account),
-                StatusCode = StatusCodes.Status400BadRequest
-            };
+            ModelState.AddModelError("Password", "Password is not valid");
+            return BadRequest(ModelState);
         }
+
+        if (string.IsNullOrWhiteSpace(account.Email) ||
+            account.Email.IndexOf('@') < 1 ||
+             account.Email.IndexOf('@') >= account.Email.Length-1)
+        {
+            ModelState.AddModelError("Email", "Email is not valid");
+            return BadRequest(ModelState);
+        }
+        
+        var acnt = _repo.Add(account, cancellationToken);
         return new ObjectResult(acnt)
         {
             DeclaredType = typeof(Account),
@@ -47,16 +51,16 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost("get_by_email/{email}")]
-    public ActionResult<Account> FindAccount(Account account, CancellationToken cancellationToken = default)
+    public ActionResult<Account> FindAccount(string email, CancellationToken cancellationToken = default)
     {
-        var acnt = _repo.GetByEmail(account.Email, cancellationToken);
+        var acnt = _repo.GetByEmail(email, cancellationToken);
         return new ObjectResult(acnt)
         {
             DeclaredType = typeof(Account),
             StatusCode = StatusCodes.Status200OK
         };
     }
-    
+
     [HttpGet]
     [Route("get_all")]
     public async Task<IReadOnlyList<Account>> GetAllAccounts(CancellationToken cancellationToken = default)
@@ -73,7 +77,7 @@ public class AccountController : ControllerBase
         return account;
     }
 
-    
+
     [HttpPut("update")]
     public async Task Edit([FromBody] Account account, CancellationToken cancellationToken = default)
     {
