@@ -1,0 +1,53 @@
+@using System.Collections.ObjectModel
+@using OnlineShop.BlazorClient.Services
+@using OnlineShop.HttpApiClient
+@using OnlineShop.Models
+
+@inject IToastService ToastService
+@inject CartService CartService
+@inject IShopClient ShopClient
+
+<PageTitle>Catalog</PageTitle>
+
+@foreach (var product in Products)
+{
+    <div class="card w-25">
+        <div class="card-body">
+            <img src="@product.Image" alt="" height="200px">
+            <h5 class="card-title">
+                <a href="/productInfo/@product.Id">@product.Name</a>
+            </h5>
+            <blockquote class="card-text">$@product.Price</blockquote>
+            @if (DisplayBuyButton)
+            {
+                <button class="btn btn-primary"
+                        type="button"
+                        @onclick=
+                        "() => Buy(product.Id, product.Name)">
+                    Купить
+                </button>
+            }
+        </div>
+    </div>
+}
+
+@code {
+
+    [EditorRequired]
+    [Parameter]
+    public IReadOnlyList<Product> Products { get; set; } = new List<Product>();
+
+    [Parameter]
+    public bool DisplayBuyButton { get; set; }
+
+    [Parameter]
+    public Guid ProductId { get; set; }
+
+    private Product Product { get; set; } = null!;
+
+    private async Task Buy(Guid productId, string productName)
+    {
+        await CartService.AddProductToCart(productId);
+        ToastService.ShowInfo($"Добавляем в корзину товар: {productName}", "Добавлено");
+    }
+}

@@ -1,0 +1,15 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Добро пожаловать в интернет магазин Аридон!</h1><br>
+
+<br><h2>@DisplayTime()</h2>
+
+@code{
+
+    string DisplayTime()
+    {
+        return $"Tекущеe местноe время сервера: {DateTime.Now:HH:mm:ss}";
+    }
+}

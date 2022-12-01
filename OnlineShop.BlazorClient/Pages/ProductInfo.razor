@@ -1,0 +1,36 @@
+@page "/productInfo/{ProductId:guid}"
+
+@using OnlineShop.HttpApiClient
+@using OnlineShop.Models
+
+@inject IShopClient ShopClient
+
+<div class="card"
+     style=
+     "
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+     margin: auto;
+     text-align: center;
+     font-size: large;
+">
+    <div class="card-body">
+        <img src="@_product?.Image" alt="" height="400px">
+        <h5 class="card-title">@_product?.Name</h5>
+        <p class="card-text">@_product?.Description</p>
+        <blockquote class="card-text">$@_product?.Price</blockquote>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public Guid ProductId { get; set; }
+
+    private Product? _product;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        _product = await ShopClient.GetProduct(ProductId);
+    }
+}
