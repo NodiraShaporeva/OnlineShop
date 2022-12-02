@@ -1,4 +1,10 @@
 @page "/account"
+@using OnlineShop.HttpApiClient
+@using OnlineShop.HttpModels.Request
+@using OnlineShop.BlazorClient.Services
+
+@inject IShopClient ShopClient
+@inject ILocalStorage LocalStorage
 
 <PageTitle>Account</PageTitle>
 
@@ -16,12 +22,23 @@ else
 
     <button type="button" class="btn btn-success" @onclick="MainLayout.OpenLogin">Login</button>
 }
+
 @code {
+
     [CascadingParameter]
     public MainLayout MainLayout { get; set; } = null!;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+        var user = await LocalStorage.GetStringAsync("user");
+        var name = await LocalStorage.GetStringAsync("name");
+        var password = await LocalStorage.GetStringAsync("password");
+        RegisterRequest request = new RegisterRequest();
+        request.Name = name;
+        request.Email = user;
+        request.Password = password;
+        await ShopClient.Register(request);
     }
+
 }

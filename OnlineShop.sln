@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.HttpApiClient", "OnlineShop.HttpApiClient\OnlineShop.HttpApiClient.csproj", "{FE73CD43-F975-4BC6-AE64-856FDF7D44F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Models", "OnlineShop.Models\OnlineShop.Models.csproj", "{44A3CAE2-195A-4597-BD13-0177C0219653}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.HttpModels", "OnlineShop.HttpModels\OnlineShop.HttpModels.csproj", "{44A3CAE2-195A-4597-BD13-0177C0219653}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.WebApi", "OnlineShop.WebApi\OnlineShop.WebApi.csproj", "{C7568547-7EFE-4AD0-A901-416248E6F3F9}"
 EndProject
@@ -11,6 +11,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.HttpApiClient.Fake", "OnlineShop.HttpApiClient.Fake\OnlineShop.HttpApiClient.Fake.csproj", "{9673199F-F12A-4589-9181-EA1ECFC1EBC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Data", "OnlineShop.Data\OnlineShop.Data.csproj", "{B6818299-9524-47ED-8563-AF1797FDF27E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Domain", "OnlineShop.Domain\OnlineShop.Domain.csproj", "{8CF9941C-CA18-431F-AD22-5DF50B94A462}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +44,9 @@ Global
 		{B6818299-9524-47ED-8563-AF1797FDF27E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6818299-9524-47ED-8563-AF1797FDF27E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6818299-9524-47ED-8563-AF1797FDF27E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CF9941C-CA18-431F-AD22-5DF50B94A462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF9941C-CA18-431F-AD22-5DF50B94A462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF9941C-CA18-431F-AD22-5DF50B94A462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF9941C-CA18-431F-AD22-5DF50B94A462}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using System.Net.Http.Json;
+using OnlineShop.HttpModels.Request;
 using OnlineShop.Models;
 
 namespace OnlineShop.HttpApiClient
@@ -49,6 +50,13 @@ namespace OnlineShop.HttpApiClient
         {
             string uri = $"{_host}/delete?productId={id}";
             var response = await _httpClient.DeleteAsync(uri + id, cancellationToken);
+            response.EnsureSuccessStatusCode();
+        }
+        public async Task Register(RegisterRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+            string uri = $"{_host}accounts/register";
+            var response = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
             response.EnsureSuccessStatusCode();
         }
     }

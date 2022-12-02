@@ -8,7 +8,9 @@
 
     <ItemGroup>
       
-      <ProjectReference Include="..\OnlineShop.Models\OnlineShop.Models.csproj" />
+      <ProjectReference Include="..\OnlineShop.Domain\OnlineShop.Domain.csproj" />
+      
+      <ProjectReference Include="..\OnlineShop.HttpModels\OnlineShop.HttpModels.csproj" />
     </ItemGroup>
 
 </Project>

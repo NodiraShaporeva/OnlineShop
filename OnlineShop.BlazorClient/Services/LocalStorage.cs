@@ -53,28 +53,24 @@ namespace OnlineShop.BlazorClient.Services
     {
         public static async Task<byte[]> CompressBytesAsync(byte[] bytes)
         {
-            using (var outputStream = new MemoryStream())
+            if (bytes == null) throw new ArgumentNullException(nameof(bytes));
+            using var outputStream = new MemoryStream();
+            await using (var compressionStream = new GZipStream(outputStream, CompressionLevel.Optimal))
             {
-                using (var compressionStream = new GZipStream(outputStream, CompressionLevel.Optimal))
-                {
-                    await compressionStream.WriteAsync(bytes, 0, bytes.Length);
-                }
-                return outputStream.ToArray();
+                await compressionStream.WriteAsync(bytes, 0, bytes.Length);
             }
+            return outputStream.ToArray();
         }
         public static async Task<byte[]> DecompressBytesAsync(byte[] bytes)
         {
-            using (var inputStream = new MemoryStream(bytes))
+            if (bytes == null) throw new ArgumentNullException(nameof(bytes));
+            using var inputStream = new MemoryStream(bytes);
+            using var outputStream = new MemoryStream();
+            await using (var compressionStream = new GZipStream(inputStream, CompressionMode.Decompress))
             {
-                using (var outputStream = new MemoryStream())
-                {
-                    using (var compressionStream = new GZipStream(inputStream, CompressionMode.Decompress))
-                    {
-                        await compressionStream.CopyToAsync(outputStream);
-                    }
-                    return outputStream.ToArray();
-                }
+                await compressionStream.CopyToAsync(outputStream);
             }
+            return outputStream.ToArray();
         }
     }
 }

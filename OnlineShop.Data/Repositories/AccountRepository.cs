@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using OnlineShop.Domain;
 using OnlineShop.Models;
 
 namespace OnlineShop.Data.Repositories;

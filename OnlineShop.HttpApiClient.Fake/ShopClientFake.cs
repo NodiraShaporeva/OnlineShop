@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using OnlineShop.HttpModels.Request;
 using OnlineShop.Models;
 
 namespace OnlineShop.HttpApiClient.Fake;
@@ -93,6 +94,11 @@ public class ShopClientFake: IShopClient
     }
 
     public Task DeleteProduct(Guid id, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task Register(RegisterRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
