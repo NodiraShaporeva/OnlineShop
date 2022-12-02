@@ -1,17 +1,119 @@
 ﻿@using Blazored.Toast.Configuration
+@using OnlineShop.BlazorClient.Services
+
 @inherits LayoutComponentBase
 
+@inject ILocalStorage LocalStorage
+
+<CascadingValue Value="this">
 <div class="page">
     <div class="sidebar">
         <NavMenu/>
     </div>
 
     <main>
-        <div class="top-row px-4"></div>
+        <div class="top-row px-4">
+            <div style="width:70px;text-align:right;">
+                @if (_loggedIn)
+                {
+                    <a class="btn btn-sm btn-primary text-white" title="Account" href="account">
+                        <span class="oi oi-key"></span>
+                    </a>
+                    <button class="btn btn-sm btn-danger" title="Logout" @onclick="Logout">
+                        <span class="oi oi-account-logout"></span>
+                    </button>
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-success" title="Login" @onclick="OpenLogin">
+                        <span class="oi oi-account-login"></span>
+                    </button>
+                }
+            </div>
+        </div>
 
         <article class="content px-4">
-                @Body
+            @Body
             <BlazoredToasts Position="ToastPosition.BottomCenter"/>
         </article>
     </main>
 </div>
+</CascadingValue>
+
+<div class="modal-backdrop fade @(_show ? "show" : "") @(_display ? "d-block" : "d-none")"></div>
+
+<div class="modal fade @(_show ? "show" : "")  @(_display ? "d-block" : "d-none")" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Login Form</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="mb-3">
+					<label for="loginEmail" class="form-label">Email</label>
+					<input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" autocomplete="off" required @bind-value="user" />
+				</div>
+				<div class="mb-3">
+					<label for="loginPassword" class="form-label">Password</label>
+					<input type="password" class="form-control" id="loginPassword" required />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" @onclick="Login">Login</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="Close">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+
+	private bool _show, _display, _loggedIn;
+	private string? user;
+
+	public string? GetUserName()
+	{
+		return _loggedIn ? user : null;
+	}
+
+	public async Task OpenLogin()
+	{
+		_display = true;
+		await Task.Delay(100);
+		_show = true;
+	}
+
+	public async Task Logout()
+	{
+		user = null;
+		_loggedIn = false;
+		await LocalStorage.RemoveAsync("user");
+	}
+
+	private async Task Close()
+	{
+		_show = false;
+		await Task.Delay(500);
+		_display = false;
+	}
+
+	private async Task Login()
+	{
+		if (!string.IsNullOrEmpty(user))
+		{
+			await Close();
+			_loggedIn = true;
+			await LocalStorage.SaveStringAsync("user", user);
+		}
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await base.OnInitializedAsync();
+		user = await LocalStorage.GetStringAsync("user");
+		_loggedIn = !string.IsNullOrEmpty(user);
+	}
+}

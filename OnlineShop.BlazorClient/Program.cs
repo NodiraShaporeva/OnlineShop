@@ -7,6 +7,8 @@ using OnlineShop.HttpApiClient;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
+builder.Services.AddSingleton<ILocalStorage, LocalStorage>();
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient
