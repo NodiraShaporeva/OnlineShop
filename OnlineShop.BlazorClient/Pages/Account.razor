@@ -1,44 +1,16 @@
-@page "/account"
+@page "/accounts/register"
 @using OnlineShop.HttpApiClient
 @using OnlineShop.HttpModels.Request
-@using OnlineShop.BlazorClient.Services
 
 @inject IShopClient ShopClient
-@inject ILocalStorage LocalStorage
 
 <PageTitle>Account</PageTitle>
 
-@if (!string.IsNullOrEmpty(MainLayout.GetUserName()))
-{
-    <h3 class="my-4">Your Account</h3>
-
-    <p>@MainLayout.GetUserName()</p>
-
-    <button type="button" class="btn btn-danger" @onclick="MainLayout.Logout">Logout</button>
-}
-else
-{
-    <h3 class="my-4">Please Login</h3>
-
-    <button type="button" class="btn btn-success" @onclick="MainLayout.OpenLogin">Login</button>
-}
-
 @code {
-
-    [CascadingParameter]
-    public MainLayout MainLayout { get; set; } = null!;
-
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        var user = await LocalStorage.GetStringAsync("user");
-        var name = await LocalStorage.GetStringAsync("name");
-        var password = await LocalStorage.GetStringAsync("password");
-        RegisterRequest request = new RegisterRequest();
-        request.Name = name;
-        request.Email = user;
-        request.Password = password;
+        var request = new RegisterRequest();
         await ShopClient.Register(request);
     }
-
 }

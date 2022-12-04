@@ -27,7 +27,7 @@ public class AccountController : ControllerBase
 
         var account = new Account(Guid.NewGuid(), request.Name, request.Email, request.Password);
         await _repo.Add(account, cancellationToken);
-        return account;
+        return Ok(account);
     }
 
     [HttpPost("get_by_email/{email}")]

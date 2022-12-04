@@ -35,6 +35,7 @@
       <Compile Remove="img\**" />
       <Compile Remove="Services\IShopClient.cs" />
       <Compile Remove="Services\ShopClient.cs" />
+      <Compile Remove="Services\LocalStorage.cs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -55,7 +55,7 @@ namespace OnlineShop.HttpApiClient
         public async Task Register(RegisterRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            string uri = $"{_host}accounts/register";
+            string uri = $"{_host}/accounts/register";
             var response = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
             response.EnsureSuccessStatusCode();
         }
