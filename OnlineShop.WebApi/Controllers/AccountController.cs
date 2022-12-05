@@ -26,9 +26,9 @@ public class AccountController : ControllerBase
             var account = await _service.Register(request.Name, request.Email, request.Password);
             return Ok(account);
         }
-        catch (Exception)
+        catch (EmailAlreadyExistsException)
         {
-            return BadRequest(new { message = "Such email exists" });
+            return BadRequest(new { message = "Такой имейл уже зарегистрирован" });
         }
     }
 }

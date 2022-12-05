@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Domain;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.RepositoriesInterfaces;
 

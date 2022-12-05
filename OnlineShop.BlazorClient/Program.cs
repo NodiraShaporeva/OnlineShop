@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Blazored.Toast;
 using OnlineShop.BlazorClient.Services;
 using OnlineShop.BlazorClient;
+using OnlineShop.Domain.Services;
 using OnlineShop.HttpApiClient;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -15,6 +16,7 @@ builder.Services.AddScoped(sp => new HttpClient
 builder.Services.AddSingleton<IShopClient>(new ShopClient());
 //builder.Services.AddSingleton<IShopClient>(new ShopClientFake());
 builder.Services.AddScoped<CartService>();
+//builder.Services.AddScoped<AccountService>();
 builder.Services.AddBlazoredToast();
 builder.Services.AddAuthorizationCore();
 
