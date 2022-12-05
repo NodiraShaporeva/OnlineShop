@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Models;
+using OnlineShop.Domain.Entities;
+using OnlineShop.Domain.RepositoriesInterfaces;
 
 namespace OnlineShop.Data.Repositories;
 

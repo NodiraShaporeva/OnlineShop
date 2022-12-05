@@ -1,4 +1,5 @@
-using OnlineShop.Models;
+using OnlineShop.Domain.Entities;
+using OnlineShop.Domain.RepositoriesInterfaces;
 
 namespace OnlineShop.Data.Repositories;
 
@@ -8,8 +9,4 @@ public class ProductRepository : EfRepository<Product>, IProductRepository
     {
         ArgumentNullException.ThrowIfNull(dbContext);
     }
-}
-
-public interface IProductRepository : IRepository<Product>
-{
 }

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data;
 using OnlineShop.Data.Repositories;
+using OnlineShop.Domain.RepositoriesInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

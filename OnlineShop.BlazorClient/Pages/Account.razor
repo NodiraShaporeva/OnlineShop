@@ -6,11 +6,23 @@
 
 <PageTitle>Account</PageTitle>
 
+<EditForm Model="_request" OnValidSubmit="Register"></EditForm>
+<DataAnnotationsValidator/>
+Email<input type="email" @bind-value="_request.Email"/>
+Login<input type="text" @bind-value="_request.Name"/>
+Password<input type="password" @bind-value="_request.Password"/>
+Email<input type="password" @bind-value="_request.PasswordConfirm"/>
+<ValidationSummary/>
+<input type="submit" value="Sign up">
+<EditForm/>
+
 @code {
+    readonly RegisterRequest _request = null!;
+
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        var request = new RegisterRequest();
-        await ShopClient.Register(request);
+        await ShopClient.Register(_request);
     }
+
 }

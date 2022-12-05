@@ -5,6 +5,8 @@ namespace OnlineShop.HttpModels.Request;
 
 public class RegisterRequest
 {
+    private const string PasswordPattern = 
+        @"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$";
     [Required]
     public string Name { get; set; }
     
@@ -20,6 +22,6 @@ public class RegisterRequest
     [Required]
     [Display(Name ="Confirm Password")]
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-    [DataType(DataType.Password)]
+    [RegularExpression(PasswordPattern)]
     public string PasswordConfirm { get; set; }
 }

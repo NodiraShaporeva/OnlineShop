@@ -1,5 +1,5 @@
+using OnlineShop.Domain.Entities;
 using OnlineShop.HttpApiClient;
-using OnlineShop.Models;
 
 namespace OnlineShop.BlazorClient.Services;
 

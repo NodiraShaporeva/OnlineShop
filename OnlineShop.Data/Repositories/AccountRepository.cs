@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Domain;
-using OnlineShop.Models;
+using OnlineShop.Domain.Entities;
+using OnlineShop.Domain.RepositoriesInterfaces;
 
 namespace OnlineShop.Data.Repositories;
 
@@ -16,9 +17,10 @@ public class AccountRepository : EfRepository<Account>, IAccountRepository
         if (email == null) throw new ArgumentNullException(nameof(email));
         return Entities.SingleAsync(it => it.Email == email, cancellationToken);
     }
-}
 
-public interface IAccountRepository : IRepository<Account>
-{
-    public Task<Account> GetByEmail(string email, CancellationToken cancellationToken = default);
+    public Task<Account?> FindByEmail(string email, CancellationToken cancellationToken = default)
+    {
+        if (email == null) throw new ArgumentNullException(nameof(email));
+        return Entities.FirstOrDefaultAsync(it => it.Email == email, cancellationToken);
+    }
 }

@@ -1,11 +1,12 @@
 ﻿#nullable enable
+using System.Net;
 using System.Net.Http.Json;
+using OnlineShop.Domain.Entities;
 using OnlineShop.HttpModels.Request;
-using OnlineShop.Models;
 
 namespace OnlineShop.HttpApiClient
 {
-    public class ShopClient: IShopClient
+    public class ShopClient : IShopClient
     {
         private const string DefaultHost = "https://localhost:7103";
         private readonly string _host;
@@ -32,7 +33,7 @@ namespace OnlineShop.HttpApiClient
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task <Product?> GetProduct(Guid id, CancellationToken cancellationToken = default)
+        public async Task<Product?> GetProduct(Guid id, CancellationToken cancellationToken = default)
         {
             string uri = $"{_host}/products/get_by_id?id={id}";
             Product? product = await _httpClient.GetFromJsonAsync<Product>(uri, cancellationToken);
@@ -52,11 +53,18 @@ namespace OnlineShop.HttpApiClient
             var response = await _httpClient.DeleteAsync(uri + id, cancellationToken);
             response.EnsureSuccessStatusCode();
         }
+
         public async Task Register(RegisterRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
             string uri = $"{_host}/accounts/register";
             var response = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                var json = await response.Content.ReadAsStringAsync(cancellationToken);
+                throw new Exception(json);
+            }
+
             response.EnsureSuccessStatusCode();
         }
     }

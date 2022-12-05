@@ -1,5 +1,5 @@
+using OnlineShop.Domain.Entities;
 using OnlineShop.HttpModels.Request;
-using OnlineShop.Models;
 
 namespace OnlineShop.HttpApiClient;
 

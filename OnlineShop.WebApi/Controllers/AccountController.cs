@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Data.Repositories;
 using OnlineShop.Domain;
+using OnlineShop.Domain.Entities;
+using OnlineShop.Domain.RepositoriesInterfaces;
 using OnlineShop.HttpModels.Request;
 
 namespace OnlineShop.WebApi.Controllers;
@@ -18,11 +20,15 @@ public class AccountController : ControllerBase
 
     [HttpPost]
     [Route("register")]
-    public async Task <ActionResult<Account>> Register(RegisterRequest request, CancellationToken cancellationToken = default)
+    public async Task<ActionResult<Account>> Register(RegisterRequest request,
+        CancellationToken cancellationToken = default)
     {
-        if (_repo.GetByEmail(request.Email, cancellationToken).IsCompletedSuccessfully)
+        if (request == null) throw new ArgumentNullException(nameof(request));
+        Account? existedAccount = await _repo.FindByEmail(request.Email, cancellationToken);
+        var emailRegistered = existedAccount is not null;
+        if (emailRegistered)
         {
-            return BadRequest();
+            return BadRequest(new { message = "Such email exists" });
         }
 
         var account = new Account(Guid.NewGuid(), request.Name, request.Email, request.Password);

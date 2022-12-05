@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Domain;
-using OnlineShop.Models;
+using OnlineShop.Domain.Entities;
 
 namespace OnlineShop.Data;
 
