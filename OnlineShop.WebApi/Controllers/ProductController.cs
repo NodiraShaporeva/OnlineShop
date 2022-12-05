@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Data.Repositories;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.RepositoriesInterfaces;
 
