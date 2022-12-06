@@ -3,11 +3,11 @@ using OnlineShop.Domain.RepositoriesInterfaces;
 
 namespace OnlineShop.Domain.Services;
 
-public abstract class AccountService
+public class AccountService
 {
     private readonly IAccountRepository _repo;
 
-    protected AccountService(IAccountRepository repo)
+    public AccountService(IAccountRepository repo)
     {
         _repo = repo ?? throw new ArgumentNullException(nameof(repo));
     }
@@ -34,7 +34,6 @@ public abstract class AccountService
 public class EmailAlreadyExistsException : Exception
 {
     public string Email { get; }
-
     public EmailAlreadyExistsException(string message, string email)
         : base(message)
     {

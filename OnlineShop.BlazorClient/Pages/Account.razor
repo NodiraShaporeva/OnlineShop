@@ -8,16 +8,18 @@
 
 <EditForm Model="_request" OnValidSubmit="Register">
     <DataAnnotationsValidator/>
-    Email<input type="email" @bind-value="_request.Email"/>
-    Имя<input type="text" @bind-value="_request.Name"/>
-    Пароль<input type="password" @bind-value="_request.Password"/>
-    Подтверждение пароля<input type="password" @bind-value="_request.PasswordConfirm"/>
-    <ValidationSummary/>
-    <input type="submit" value="Sign up">
+    <div style="width:200px;">
+        <br>Email<input type="email" @bind-value="_request.Email"/><br>
+        <br>Логин<input type="text" @bind-value="_request.Name"/><br>
+        <br>Пароль<input type="password" @bind-value="_request.Password"/><br>
+        <br>Подтверждение пароля<input type="password" @bind-value="_request.PasswordConfirm"/><br>
+        <ValidationSummary/>
+        <br><input type="submit" value="Sign up"><br>
+    </div>
 </EditForm>
 
 @code {
-    RegisterRequest _request = new RegisterRequest();
+    RegisterRequest _request = new();
 
     protected override async Task OnInitializedAsync()
     {

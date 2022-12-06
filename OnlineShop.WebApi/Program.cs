@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data;
 using OnlineShop.Data.Repositories;
 using OnlineShop.Domain.RepositoriesInterfaces;
+using OnlineShop.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
-//builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped(x => new AccountService(x.GetRequiredService<IAccountRepository>()));
 
 var dbPath = "myapp.db";
 
