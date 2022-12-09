@@ -16,7 +16,6 @@ builder.Services.AddScoped(sp => new HttpClient
 builder.Services.AddSingleton<IShopClient>(new ShopClient());
 //builder.Services.AddSingleton<IShopClient>(new ShopClientFake());
 builder.Services.AddScoped<CartService>();
-//builder.Services.AddScoped<AccountService>();
 builder.Services.AddBlazoredToast();
 builder.Services.AddAuthorizationCore();
 

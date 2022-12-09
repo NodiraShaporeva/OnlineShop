@@ -23,7 +23,7 @@ public class AccountController : ControllerBase
     {
         try
         {
-            var account = await _service.Register(request.Name, request.Email, request.Password);
+            var account = await _service.Register(request.Name, request.Email, request.Password, cancellationToken);
             return Ok(account);
         }
         catch (EmailAlreadyExistsException)

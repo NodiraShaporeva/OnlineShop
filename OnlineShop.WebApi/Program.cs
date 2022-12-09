@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data;
 using OnlineShop.Data.Repositories;
 using OnlineShop.Domain.RepositoriesInterfaces;
 using OnlineShop.Domain.Services;
+using OnlineShop.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
-builder.Services.AddScoped(x => new AccountService(x.GetRequiredService<IAccountRepository>()));
+builder.Services.AddScoped<AccountService>();
+builder.Services.Configure<PasswordHasherOptions>(opt => opt.IterationCount = 100_000);
+builder.Services.AddSingleton<IPasswordHasherService, Pbkdf2PasswordHasher>();
 
 var dbPath = "myapp.db";
 
@@ -21,8 +25,27 @@ builder.Services.AddDbContext<AppDbContext>
 
 var app = builder.Build();
 
-app.MapControllers();
+string hashedPassword = "";
+app.MapGet("/hash", (string pwd, IPasswordHasherService hasher) =>
+{
+   hashedPassword = hasher.HashPassword(pwd);
+   return hashedPassword;
+});
 
+app.MapGet("/check", Check);
+
+IResult Check(string pwd, IPasswordHasherService hasher, AppDbContext ctx)
+    {
+        bool result = hasher.VerifyPassword(hashedPassword, pwd);
+        if (!result)
+        {
+            return Results.Unauthorized();
+        }
+        var account = ctx.Accounts.Where(s => s.PasswordHash==hashedPassword);
+        return Results.Ok(account);
+    }
+
+app.MapControllers();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -38,12 +61,8 @@ app.UseCors(policy =>
         .AllowAnyOrigin()
         ;
 });
-
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();

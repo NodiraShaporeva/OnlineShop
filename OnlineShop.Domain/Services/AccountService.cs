@@ -6,25 +6,27 @@ namespace OnlineShop.Domain.Services;
 public class AccountService
 {
     private readonly IAccountRepository _repo;
-
-    public AccountService(IAccountRepository repo)
+    private readonly IPasswordHasherService _service;
+    public AccountService(IAccountRepository repo, IPasswordHasherService service)
     {
         _repo = repo ?? throw new ArgumentNullException(nameof(repo));
+        _service = service;
     }
 
-    public virtual async Task<Account> Register(string name, string email, string password,
+    public virtual async Task<Account> Register(string name, string email, string passwordHash,
         CancellationToken cancellation = default)
     {
         if (name == null) throw new ArgumentNullException(nameof(name));
         if (email == null) throw new ArgumentNullException(nameof(email));
-        if (password == null) throw new ArgumentNullException(nameof(password));
+        if (passwordHash == null) throw new ArgumentNullException(nameof(passwordHash));
 
         if (await _repo.FindByEmail(email, cancellation) != null)
         {
             throw new EmailAlreadyExistsException("Такой имейл уже зарегистрирован", email);
         }
 
-        var account = new Account(Guid.NewGuid(), name, email, password);
+        string hashedPassword = _service.HashPassword(passwordHash);
+        var account = new Account(Guid.NewGuid(), name, email, hashedPassword);
         await _repo.Add(account, cancellation);
         return account;
     }
@@ -34,6 +36,7 @@ public class AccountService
 public class EmailAlreadyExistsException : Exception
 {
     public string Email { get; }
+
     public EmailAlreadyExistsException(string message, string email)
         : base(message)
     {
