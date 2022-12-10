@@ -30,13 +30,35 @@ public class AccountService
         await _repo.Add(account, cancellation);
         return account;
     }
+
+    public async Task<Account> LogIn(string email, string password, CancellationToken cancellationToken = default)
+    {
+        var account = await _repo.FindByEmail(email, cancellationToken);
+        if (account is null) throw new EmailNotFoundException(email);
+
+        var result = _service.VerifyPassword(account.PasswordHash, password);
+        if (!result)
+        {
+            throw new IncorrectPasswordException();
+        }
+        return account;
+    }
 }
 
-[Serializable]
+public class IncorrectPasswordException : Exception
+{
+}
+
+public class EmailNotFoundException : Exception
+{
+    public EmailNotFoundException(string email): base(email)
+    {
+    }
+}
+
 public class EmailAlreadyExistsException : Exception
 {
-    public string Email { get; }
-
+    public string Email;
     public EmailAlreadyExistsException(string message, string email)
         : base(message)
     {

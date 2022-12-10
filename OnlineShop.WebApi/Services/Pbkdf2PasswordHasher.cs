@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.Services;
 
@@ -6,8 +7,13 @@ namespace OnlineShop.WebApi.Services;
 
 public class Pbkdf2PasswordHasher: IPasswordHasherService
 {
-    private readonly PasswordHasher<Account> _hasher = new ();
-    private readonly Account _dummy = new(Guid.Empty, "", "fake@fake.com", "Ficus.76");
+    private readonly PasswordHasher<Account> _hasher;
+    private readonly Account _dummy = new(Guid.Empty, "", "fake@fake.com", "");
+
+    public Pbkdf2PasswordHasher(IOptions<PasswordHasherOptions> optionAccessor)
+    {
+        _hasher = new PasswordHasher<Account>(optionAccessor);
+    }
     public string HashPassword(string password)
     {
         string hashedPassword = _hasher.HashPassword(_dummy, password);

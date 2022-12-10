@@ -31,4 +31,24 @@ public class AccountController : ControllerBase
             return BadRequest(new { message = "Такой имейл уже зарегистрирован" });
         }
     }
+
+    [HttpPost]
+    [Route("check")]
+    public async Task<ActionResult<Account>> LogIn(RegisterRequest request, string email, string password,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var account = await _service.LogIn(request.Email, request.Password, cancellationToken);
+            return Ok(account);
+        }
+        catch (EmailNotFoundException)
+        {
+            return BadRequest(new { message = "Такой имейл не зарегистрирован" });
+        }
+        catch (IncorrectPasswordException)
+        {
+            return BadRequest(new { message = "Неверный пароль" });
+        }
+    }
 }
