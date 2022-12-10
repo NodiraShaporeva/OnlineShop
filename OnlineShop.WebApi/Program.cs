@@ -5,7 +5,7 @@ using OnlineShop.Data;
 using OnlineShop.Data.Repositories;
 using OnlineShop.Domain.RepositoriesInterfaces;
 using OnlineShop.Domain.Services;
-using OnlineShop.WebApi.Middlewares;
+using OnlineShop.WebApi.Middleware;
 using OnlineShop.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);

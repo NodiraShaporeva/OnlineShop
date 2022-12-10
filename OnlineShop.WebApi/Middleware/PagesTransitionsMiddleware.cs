@@ -1,4 +1,4 @@
-namespace OnlineShop.WebApi.Middlewares;
+namespace OnlineShop.WebApi.Middleware;
 
 public class PagesTransitionsMiddleware
 {
