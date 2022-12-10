@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Domain.Entities;
+using OnlineShop.Domain.Exceptions;
 using OnlineShop.Domain.Services;
 using OnlineShop.HttpModels.Request;
 
@@ -44,11 +45,11 @@ public class AccountController : ControllerBase
         }
         catch (EmailNotFoundException)
         {
-            return BadRequest(new { message = "Такой имейл не зарегистрирован" });
+            return Unauthorized(new { message = "Такой имейл не зарегистрирован" });
         }
         catch (IncorrectPasswordException)
         {
-            return BadRequest(new { message = "Неверный пароль" });
+            return Unauthorized(new { message = "Неверный пароль" });
         }
     }
 }

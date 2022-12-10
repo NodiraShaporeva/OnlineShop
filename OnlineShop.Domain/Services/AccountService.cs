@@ -1,4 +1,5 @@
 using OnlineShop.Domain.Entities;
+using OnlineShop.Domain.Exceptions;
 using OnlineShop.Domain.RepositoriesInterfaces;
 
 namespace OnlineShop.Domain.Services;
@@ -42,26 +43,5 @@ public class AccountService
             throw new IncorrectPasswordException();
         }
         return account;
-    }
-}
-
-public class IncorrectPasswordException : Exception
-{
-}
-
-public class EmailNotFoundException : Exception
-{
-    public EmailNotFoundException(string email): base(email)
-    {
-    }
-}
-
-public class EmailAlreadyExistsException : Exception
-{
-    public string Email;
-    public EmailAlreadyExistsException(string message, string email)
-        : base(message)
-    {
-        Email = email;
     }
 }
