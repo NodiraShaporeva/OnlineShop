@@ -102,4 +102,9 @@ public class ShopClientFake: IShopClient
     {
         throw new NotImplementedException();
     }
+
+    public Task LogIn(LogInRequest request, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
 }

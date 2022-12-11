@@ -34,8 +34,8 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost]
-    [Route("check")]
-    public async Task<ActionResult<Account>> LogIn(RegisterRequest request, string email, string password,
+    [Route("logIn")]
+    public async Task<ActionResult<Account>> LogIn(LogInRequest request, string email, string password,
         CancellationToken cancellationToken = default)
     {
         try

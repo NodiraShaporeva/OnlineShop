@@ -1,0 +1,31 @@
+@page "/accounts/logIn"
+@using OnlineShop.HttpApiClient
+@using OnlineShop.HttpModels.Request
+
+@inject IShopClient ShopClient
+
+<PageTitle>Вход в кабинет</PageTitle>
+
+<EditForm Model="_request" OnValidSubmit="Login">
+    <DataAnnotationsValidator/>
+    <div style="width:200px;">
+        <br>Email<input type="email" @bind-value="_request.Email"/><br>
+        <br>Пароль<input type="password" @bind-value="_request.Password"/><br>
+        <ValidationSummary/>
+        <br><input type="submit" value="Log in"><br>
+    </div>
+</EditForm>
+
+@code {
+    LogInRequest _request = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
+    private async Task Login()
+    {
+        await ShopClient.LogIn(_request);
+    }
+}

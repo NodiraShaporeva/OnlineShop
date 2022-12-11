@@ -1,4 +1,6 @@
 ﻿//using System.Net;
+
+using System.Net;
 using System.Net.Http.Json;
 using OnlineShop.Domain.Entities;
 using OnlineShop.HttpModels.Request;
@@ -65,6 +67,21 @@ namespace OnlineShop.HttpApiClient
                 throw new Exception(json);
             }
 */
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task LogIn(LogInRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+            string uri = $"{_host}/accounts/logIn";
+            var response = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
+            
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                var json = await response.Content.ReadAsStringAsync(cancellationToken);
+                throw new Exception(json);
+            }
+            
             response.EnsureSuccessStatusCode();
         }
     }

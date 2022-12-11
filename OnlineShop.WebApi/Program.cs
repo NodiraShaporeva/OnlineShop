@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,11 @@ builder.Services.AddHttpLogging(options =>
                             | HttpLoggingFields.ResponseBody;
 });
 
+builder.Services.Configure<JsonOptions>(options =>
+{
+    options.SerializerOptions.IncludeFields = true;
+});
+
 var app = builder.Build();
 
 app.UseMiddleware<PagesTransitionsMiddleware>();
@@ -48,6 +54,7 @@ app.Use(async (context, next) =>
         await context.Response.WriteAsJsonAsync("Only Edge is supported");
     }
 });
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseHttpLogging();
@@ -70,5 +77,7 @@ app.UseCors(policy =>
 
 app.UseAuthorization();
 app.MapControllers();
+
+app.UseMiddleware<PagesTransitionsMiddleware>();
 
 app.Run();
