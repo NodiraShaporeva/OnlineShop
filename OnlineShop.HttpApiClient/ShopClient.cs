@@ -1,6 +1,7 @@
 ﻿//using System.Net;
 
 using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using OnlineShop.Domain.Entities;
 using OnlineShop.HttpModels.Request;
@@ -17,6 +18,7 @@ namespace OnlineShop.HttpApiClient
         {
             _host = host;
             _httpClient = httpClient ?? new HttpClient();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "token");
         }
 
         public async Task<IReadOnlyList<Product>> GetProducts(CancellationToken cancellationToken = default)

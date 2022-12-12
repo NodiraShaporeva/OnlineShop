@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Blazored.Toast;
 using OnlineShop.BlazorClient.Services;
 using OnlineShop.BlazorClient;
-using OnlineShop.Domain.Services;
 using OnlineShop.HttpApiClient;
+using OnlineShop.HttpApiClient.Fake;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 

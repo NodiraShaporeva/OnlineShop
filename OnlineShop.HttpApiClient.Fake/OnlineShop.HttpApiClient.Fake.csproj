@@ -10,4 +10,5 @@
       <ProjectReference Include="..\OnlineShop.HttpApiClient\OnlineShop.HttpApiClient.csproj" />
     </ItemGroup>
 
+
 </Project>

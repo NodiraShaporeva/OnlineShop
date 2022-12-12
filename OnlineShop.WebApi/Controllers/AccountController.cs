@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.Exceptions;
@@ -35,7 +37,7 @@ public class AccountController : ControllerBase
 
     [HttpPost]
     [Route("logIn")]
-    public async Task<ActionResult<Account>> LogIn(LogInRequest request, string email, string password,
+    public async Task<ActionResult<Account>> LogIn(LogInRequest request,
         CancellationToken cancellationToken = default)
     {
         try
