@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace OnlineShop.WebApi;
+namespace OnlineShop.WebApi.Configurations;
 
 public class JwtConfig
 {

@@ -36,7 +36,7 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost]
-    [Route("logIn")]
+    [Route("login")]
     public async Task<ActionResult<Account>> LogIn(LogInRequest request,
         CancellationToken cancellationToken = default)
     {
@@ -54,4 +54,16 @@ public class AccountController : ControllerBase
             return Unauthorized(new { message = "Неверный пароль" });
         }
     }
+    
+    [Authorize]
+    [HttpGet("get_account")]
+    public async Task<ActionResult<Account>> GetCurrentAccount()
+    {
+        var strId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        var guid = Guid.Parse(strId!);
+        Account account = await _service.GetAccount(guid);
+        return account;
+    }
+
 }

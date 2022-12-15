@@ -1,5 +1,6 @@
 using OnlineShop.Domain.Entities;
 using OnlineShop.HttpModels.Request;
+using OnlineShop.HttpModels.Response;
 
 namespace OnlineShop.HttpApiClient;
 
@@ -10,6 +11,6 @@ public interface IShopClient
     Task<Product?> GetProduct(Guid id, CancellationToken cancellationToken = default);
     Task UpdateProduct(Product newProduct, Guid id, CancellationToken cancellationToken = default);
     Task DeleteProduct(Guid id, CancellationToken cancellationToken = default);
-    Task Register(RegisterRequest request, CancellationToken cancellationToken = default);
-    Task LogIn(LogInRequest request, CancellationToken cancellationToken = default);
+    Task<LogInResponse> Register(RegisterRequest request, CancellationToken cancellationToken = default);
+    Task<LogInResponse> LogIn(LogInRequest request, CancellationToken cancellationToken = default);
 }

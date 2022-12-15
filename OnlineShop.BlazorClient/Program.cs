@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Blazored.Toast;
@@ -13,8 +14,10 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient
     { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) } 
 );
-builder.Services.AddSingleton<IShopClient>(new ShopClient());
+builder.Services.AddSingleton(new ShopClient());
+//builder.Services.AddSingleton<IShopClient>(new ShopClient());
 //builder.Services.AddSingleton<IShopClient>(new ShopClientFake());
+builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<CartService>();
 builder.Services.AddBlazoredToast();
 builder.Services.AddAuthorizationCore();

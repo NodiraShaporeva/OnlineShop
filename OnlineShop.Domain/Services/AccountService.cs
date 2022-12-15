@@ -44,4 +44,9 @@ public class AccountService
         }
         return account;
     }
+
+    public  Task<Account> GetAccount(Guid guid)
+    {
+        return _repo.GetById(guid);
+    }
 }

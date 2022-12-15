@@ -1,31 +1,33 @@
-@page "/accounts/logIn"
-@using OnlineShop.HttpApiClient
+@page "/accounts/login"
 @using OnlineShop.HttpModels.Request
 
-@inject IShopClient ShopClient
 
-<PageTitle>Вход в кабинет</PageTitle>
+@inherits AppComponentBase
 
-<EditForm Model="_request" OnValidSubmit="Login">
-    <DataAnnotationsValidator/>
-    <div style="width:200px;">
-        <br>Email<input type="email" @bind-value="_request.Email"/><br>
-        <br>Пароль<input type="password" @bind-value="_request.Password"/><br>
-        <ValidationSummary/>
-        <br><input type="submit" value="Log in"><br>
-    </div>
+@inject NavigationManager NavigationManager;
+
+<h3>Вход</h3>
+<EditForm Model="_request" OnValidSubmit="ValidSubmit">
+    <DataAnnotationsValidator />
+    Email: <InputText @bind-Value="_request.Email" class="text-black"></InputText> <br/>
+    Пароль: <InputText type="password" @bind-Value="_request.Password" class="text-black"></InputText> <br/>
+    <ValidationSummary />
+    <input type="submit" value="Войти">
 </EditForm>
 
 @code {
-    LogInRequest _request = new();
+    private readonly LogInRequest _request = new();
 
-    protected override async Task OnInitializedAsync()
+    private void OnClick()
     {
-        await base.OnInitializedAsync();
+        throw new Exception("OnClick");
     }
 
-    private async Task Login()
+    private async Task ValidSubmit()
     {
-        await ShopClient.LogIn(_request);
+        var response = await ShopClient.LogIn(_request);
+        await LocalStorage.SetItemAsStringAsync("token", response.Token);
+        NavigationManager.NavigateTo("Account");
     }
+
 }

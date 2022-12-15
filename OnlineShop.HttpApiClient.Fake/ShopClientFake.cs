@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using OnlineShop.Domain.Entities;
 using OnlineShop.HttpModels.Request;
+using OnlineShop.HttpModels.Response;
 
 namespace OnlineShop.HttpApiClient.Fake;
 
@@ -98,12 +99,12 @@ public class ShopClientFake: IShopClient
         throw new NotImplementedException();
     }
 
-    public Task Register(RegisterRequest request, CancellationToken cancellationToken = default)
+    public Task<LogInResponse> Register(RegisterRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task LogIn(LogInRequest request, CancellationToken cancellationToken = default)
+    public Task<LogInResponse> LogIn(LogInRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

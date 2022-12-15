@@ -8,7 +8,7 @@ using OnlineShop.Data;
 using OnlineShop.Data.Repositories;
 using OnlineShop.Domain.RepositoriesInterfaces;
 using OnlineShop.Domain.Services;
-using OnlineShop.WebApi;
+using OnlineShop.WebApi.Configurations;
 using OnlineShop.WebApi.Middleware;
 using OnlineShop.WebApi.Services;
 using OnlineShop.WebApi.TokenHelpers;
@@ -24,7 +24,7 @@ builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.Configure<PasswordHasherOptions>(opt => opt.IterationCount = 10_000);
 builder.Services.AddSingleton<IPasswordHasherService, Pbkdf2PasswordHasher>();
-builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<JwtTokenService>();
 
 var dbPath = "myapp.db";
 builder.Services.AddDbContext<AppDbContext>
@@ -64,8 +64,6 @@ builder.Services.AddHttpLogging(options =>
 {
     options.LoggingFields = HttpLoggingFields.RequestHeaders
                             | HttpLoggingFields.ResponseHeaders;
-//                            | HttpLoggingFields.RequestBody
-//                            | HttpLoggingFields.ResponseBody;
 });
 
 builder.Services.AddSwaggerGen(c =>

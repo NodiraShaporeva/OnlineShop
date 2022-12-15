@@ -1,10 +1,9 @@
-﻿//using System.Net;
-
-using System.Net;
+﻿using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using OnlineShop.Domain.Entities;
 using OnlineShop.HttpModels.Request;
+using OnlineShop.HttpModels.Response;
 
 namespace OnlineShop.HttpApiClient
 {
@@ -18,7 +17,6 @@ namespace OnlineShop.HttpApiClient
         {
             _host = host;
             _httpClient = httpClient ?? new HttpClient();
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "token");
         }
 
         public async Task<IReadOnlyList<Product>> GetProducts(CancellationToken cancellationToken = default)
@@ -57,34 +55,41 @@ namespace OnlineShop.HttpApiClient
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task Register(RegisterRequest request, CancellationToken cancellationToken = default)
+        public async Task<LogInResponse> Register(RegisterRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
             string uri = $"{_host}/accounts/register";
-            var response = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
-/*            
-            if (response.StatusCode == HttpStatusCode.BadRequest)
-            {
-                var json = await response.Content.ReadAsStringAsync(cancellationToken);
-                throw new Exception(json);
-            }
-*/
-            response.EnsureSuccessStatusCode();
+            var responseMessage = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
+            responseMessage.EnsureSuccessStatusCode();
+            
+            var response = await responseMessage.Content.ReadFromJsonAsync<LogInResponse>(cancellationToken: cancellationToken);
+            SetAuthToken(response?.Token!);
+            return response!;
         }
 
-        public async Task LogIn(LogInRequest request, CancellationToken cancellationToken = default)
+        public async Task<LogInResponse> LogIn(LogInRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            string uri = $"{_host}/accounts/logIn";
-            var response = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
+            string uri = $"{_host}/accounts/login";
+            HttpResponseMessage responseMessage = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
             
-            if (response.StatusCode == HttpStatusCode.BadRequest)
+            if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
-                var json = await response.Content.ReadAsStringAsync(cancellationToken);
+                var json = await responseMessage.Content.ReadAsStringAsync(cancellationToken);
                 throw new Exception(json);
             }
-            
-            response.EnsureSuccessStatusCode();
+            responseMessage.EnsureSuccessStatusCode();
+
+            var response = await responseMessage.Content.ReadFromJsonAsync<LogInResponse>(cancellationToken: cancellationToken);
+            SetAuthToken(response?.Token!);
+            return response!;
+        }
+
+        public void SetAuthToken(string token)
+        {
+            if (token == null) throw new ArgumentNullException(nameof(token));
+            var header = new AuthenticationHeaderValue("Bearer", token);
+            _httpClient.DefaultRequestHeaders.Authorization = header;
         }
     }
 }

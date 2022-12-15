@@ -2,14 +2,16 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using OnlineShop.Domain.Entities;
+using OnlineShop.Domain.RepositoriesInterfaces;
+using OnlineShop.WebApi.Configurations;
 
 namespace OnlineShop.WebApi.TokenHelpers;
 
-public class TokenService
+public class JwtTokenService : ITokenService
 {
     private readonly JwtConfig _jwtConfig;
 
-    public TokenService(JwtConfig jwtConfig)
+    public JwtTokenService(JwtConfig jwtConfig)
     {
         _jwtConfig = jwtConfig;
     }
