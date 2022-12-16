@@ -14,8 +14,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient
     { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) } 
 );
-builder.Services.AddSingleton(new ShopClient());
-//builder.Services.AddSingleton<IShopClient>(new ShopClient());
+//builder.Services.AddSingleton(new ShopClient());
+builder.Services.AddSingleton<IShopClient>(new ShopClient());
 //builder.Services.AddSingleton<IShopClient>(new ShopClientFake());
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<CartService>();
