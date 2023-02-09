@@ -33,6 +33,14 @@ builder.Services.AddDbContext<AppDbContext>
 JwtConfig jwtConfig = builder.Configuration
     .GetSection("JwtConfig")
     .Get<JwtConfig>()!;
+// value cannot be null
+// в противном случае может возникнуть проблема при запуске приложения
+// при отсутствии пользовательских секретов с JWT Token
+if (jwtConfig == null)
+{
+    throw new ArgumentNullException(nameof(jwtConfig));
+}
+builder.Services.AddSingleton(jwtConfig);
 builder.Services.AddSingleton(jwtConfig);
 
 builder.Services.AddAuthentication(options =>

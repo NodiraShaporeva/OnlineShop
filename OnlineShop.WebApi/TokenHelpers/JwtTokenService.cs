@@ -12,8 +12,10 @@ public class JwtTokenService : ITokenService
     private readonly JwtConfig _jwtConfig;
 
     public JwtTokenService(JwtConfig jwtConfig)
-    {
-        _jwtConfig = jwtConfig;
+    {   // value cannot be null
+        // в противном случае может возникнуть проблема при запуске приложения
+        // при отсутствии пользовательских секретов с JWT Token
+        _jwtConfig = jwtConfig ?? throw new ArgumentNullException(nameof(jwtConfig));
     }
 
     public string GenerateToken(Account account)
