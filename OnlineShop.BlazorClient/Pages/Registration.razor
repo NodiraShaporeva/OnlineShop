@@ -1,8 +1,10 @@
 @page "/accounts/register"
 @using OnlineShop.HttpModels.Request
-@using Blazored.LocalStorage
+@using OnlineShop.HttpApiClient
+
 @inherits AppComponentBase
 
+@inject IShopClient ShopClient
 @inject NavigationManager NavigationManager;
 
 <h3>Регистрация</h3>
