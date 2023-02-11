@@ -8,7 +8,7 @@ namespace OnlineShop.BlazorClient.Pages;
 
 public abstract class AppComponentBase : ComponentBase
 {
-    [Inject] protected ShopClient ShopClient { get; private set; }
+    [Inject] protected IShopClient BaseShopClient { get; private set; }
     [Inject] protected ILocalStorageService LocalStorage { get; private set; }
 
     protected bool IsTokenChecked { get; private set; }
@@ -23,7 +23,7 @@ public abstract class AppComponentBase : ComponentBase
             var token = await LocalStorage.GetItemAsync<string>("token");
             if (!string.IsNullOrEmpty(token))
             {
-                ShopClient.SetAuthToken(token);
+                BaseShopClient.SetAuthToken(token);
             }
         }
     }

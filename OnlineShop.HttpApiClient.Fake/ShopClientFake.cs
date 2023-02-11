@@ -108,4 +108,9 @@ public class ShopClientFake: IShopClient
     {
         throw new NotImplementedException();
     }
+
+    public void SetAuthToken(string token)
+    {
+        throw new NotImplementedException();
+    }
 }
