@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using OnlineShop.Data;
 using OnlineShop.Data.Repositories;
+using OnlineShop.Domain;
 using OnlineShop.Domain.RepositoriesInterfaces;
 using OnlineShop.Domain.Services;
 using OnlineShop.WebApi.Configurations;
@@ -21,10 +22,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.Configure<PasswordHasherOptions>(opt => opt.IterationCount = 10_000);
 builder.Services.AddSingleton<IPasswordHasherService, Pbkdf2PasswordHasher>();
 builder.Services.AddScoped<JwtTokenService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var dbPath = "myapp.db";
 builder.Services.AddDbContext<AppDbContext>

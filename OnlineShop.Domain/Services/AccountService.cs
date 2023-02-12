@@ -8,10 +8,13 @@ public class AccountService
 {
     private readonly IAccountRepository _repo;
     private readonly IPasswordHasherService _service;
-    public AccountService(IAccountRepository repo, IPasswordHasherService service)
+    private readonly IUnitOfWork _uow;
+
+    public AccountService(IAccountRepository repo, IPasswordHasherService service, IUnitOfWork uow)
     {
         _repo = repo ?? throw new ArgumentNullException(nameof(repo));
         _service = service;
+        _uow = uow;
     }
 
     public virtual async Task<Account> Register(string name, string email, string passwordHash,
@@ -28,7 +31,13 @@ public class AccountService
 
         string hashedPassword = _service.HashPassword(passwordHash);
         var account = new Account(Guid.NewGuid(), name, email, hashedPassword);
-        await _repo.Add(account, cancellation);
+        Cart cart = new() { Id = Guid.NewGuid(), AccountId = account.Id };
+        
+        // await _repo.Add(account, cancellation);
+        await _uow.AccountRepository.Add(account, cancellation);
+        await _uow.CartRepository.Add(cart, cancellation);
+        await _uow.SaveChangesAsync(cancellation);
+
         return account;
     }
 

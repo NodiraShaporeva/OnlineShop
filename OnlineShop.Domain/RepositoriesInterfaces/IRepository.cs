@@ -1,6 +1,8 @@
+using OnlineShop.Domain.Entities;
+
 namespace OnlineShop.Domain.RepositoriesInterfaces;
 
-public interface IRepository<TEntity>
+public interface IRepository<TEntity> where TEntity: IEntity
 {
     Task<IReadOnlyList<TEntity>> GetAll(CancellationToken cancellationToken = default);
     Task<TEntity> GetById(Guid id, CancellationToken cancellationToken = default);

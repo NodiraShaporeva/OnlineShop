@@ -1,8 +1,8 @@
-namespace OnlineShop.HttpModels.Response;
+﻿namespace OnlineShop.HttpModels.Response;
 
-public class LogInResponse
+public class RegisterResponse
 {
-    public LogInResponse(string? message = null)
+    public RegisterResponse(string? message = null)
     {
         Message = message;
     }
