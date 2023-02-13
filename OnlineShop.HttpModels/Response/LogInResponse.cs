@@ -2,12 +2,12 @@ namespace OnlineShop.HttpModels.Response;
 
 public class LogInResponse
 {
-    public LogInResponse(string? message = null)
+    public LogInResponse(string token)
     {
-        Message = message;
+        Token = token;
     }
 
     public string? Message { get; set; }
     public string? Email { get; set; }
-    public string? Token { get; set; }
+    public string Token { get; set; }
 }

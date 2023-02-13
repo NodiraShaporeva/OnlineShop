@@ -2,12 +2,12 @@
 
 public class RegisterResponse
 {
-    public RegisterResponse(string? message = null)
+    public RegisterResponse(string token)
     {
-        Message = message;
+        Token = token;
     }
 
     public string? Message { get; set; }
     public string? Email { get; set; }
-    public string? Token { get; set; }
+    public string Token { get; set; }
 }

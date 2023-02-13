@@ -26,7 +26,7 @@ builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.Configure<PasswordHasherOptions>(opt => opt.IterationCount = 10_000);
 builder.Services.AddSingleton<IPasswordHasherService, Pbkdf2PasswordHasher>();
-builder.Services.AddScoped<JwtTokenService>();
+builder.Services.AddScoped<ITokenService, JwtTokenService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var dbPath = "myapp.db";

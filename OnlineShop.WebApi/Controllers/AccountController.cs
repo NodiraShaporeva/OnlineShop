@@ -5,6 +5,7 @@ using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.Exceptions;
 using OnlineShop.Domain.Services;
 using OnlineShop.HttpModels.Request;
+using OnlineShop.HttpModels.Response;
 
 namespace OnlineShop.WebApi.Controllers;
 
@@ -21,13 +22,14 @@ public class AccountController : ControllerBase
 
     [HttpPost]
     [Route("register")]
-    public async Task<ActionResult<Account>> Register(RegisterRequest request,
+    public async Task<ActionResult<LogInResponse>> Register(RegisterRequest request,
         CancellationToken cancellationToken = default)
     {
         try
         {
-            var account = await _service.Register(request.Name, request.Email, request.Password, cancellationToken);
-            return Ok(account);
+            var (account, token) = await _service.Register(request.Name, request.Email, request.Password, cancellationToken);
+            return new LogInResponse(token);
+            
         }
         catch (EmailAlreadyExistsException)
         {
@@ -37,13 +39,13 @@ public class AccountController : ControllerBase
 
     [HttpPost]
     [Route("login")]
-    public async Task<ActionResult<Account>> LogIn(LogInRequest request,
+    public async Task<ActionResult<LogInResponse>> LogIn(LogInRequest request,
         CancellationToken cancellationToken = default)
     {
         try
         {
-            var account = await _service.LogIn(request.Email, request.Password, cancellationToken);
-            return Ok(account);
+            var (account, token) = await _service.LogIn(request.Email, request.Password, cancellationToken);
+            return new LogInResponse(token);
         }
         catch (EmailNotFoundException)
         {

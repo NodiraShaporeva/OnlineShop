@@ -8,16 +8,18 @@ public class AccountService
 {
     private readonly IAccountRepository _repo;
     private readonly IPasswordHasherService _service;
+    private readonly ITokenService _jwtTokenService;
     private readonly IUnitOfWork _uow;
 
-    public AccountService(IAccountRepository repo, IPasswordHasherService service, IUnitOfWork uow)
+    public AccountService(IAccountRepository repo, IPasswordHasherService service, IUnitOfWork uow, ITokenService jwtTokenService)
     {
         _repo = repo ?? throw new ArgumentNullException(nameof(repo));
         _service = service;
         _uow = uow;
+        _jwtTokenService = jwtTokenService;
     }
 
-    public virtual async Task<Account> Register(string name, string email, string passwordHash,
+    public virtual async Task<(Account, string token)> Register(string name, string email, string passwordHash,
         CancellationToken cancellation = default)
     {
         if (name == null) throw new ArgumentNullException(nameof(name));
@@ -33,15 +35,15 @@ public class AccountService
         var account = new Account(Guid.NewGuid(), name, email, hashedPassword);
         Cart cart = new() { Id = Guid.NewGuid(), AccountId = account.Id };
         
-        // await _repo.Add(account, cancellation);
         await _uow.AccountRepository.Add(account, cancellation);
         await _uow.CartRepository.Add(cart, cancellation);
         await _uow.SaveChangesAsync(cancellation);
 
-        return account;
+        var token = _jwtTokenService.GenerateToken(account);
+        return (account, token);
     }
 
-    public async Task<Account> LogIn(string email, string password, CancellationToken cancellationToken = default)
+    public async Task<(Account, string token)> LogIn(string email, string password, CancellationToken cancellationToken = default)
     {
         var account = await _repo.FindByEmail(email, cancellationToken);
         if (account is null) throw new EmailNotFoundException(email);
@@ -51,7 +53,7 @@ public class AccountService
         {
             throw new IncorrectPasswordException();
         }
-        return account;
+        return (account, _jwtTokenService.GenerateToken(account));
     }
 
     public  Task<Account> GetAccount(Guid guid)
