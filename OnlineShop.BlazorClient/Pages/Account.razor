@@ -1,0 +1,17 @@
+﻿@page "/Account"
+@using OnlineShop.HttpApiClient
+@inherits AppComponentBase
+
+<h3>Аккаунт</h3>
+<br/>Имя: @_account?.Name
+<br/>Email: @_account?.Email
+
+@code {
+	private Domain.Entities.Account? _account;
+
+	// protected override async Task OnInitializedAsync()
+	// {
+	// 	await base.OnInitializedAsync();
+	// 	_account = await ShopClient.GetAccount();
+	// }
+}

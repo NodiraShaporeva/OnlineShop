@@ -91,5 +91,10 @@ namespace OnlineShop.HttpApiClient
             var header = new AuthenticationHeaderValue("Bearer", token);
             _httpClient.DefaultRequestHeaders.Authorization = header;
         }
+
+        // public static async Task<Account?> GetAccount()
+        // {
+        //     throw new NotImplementedException();
+        // }
     }
 }
