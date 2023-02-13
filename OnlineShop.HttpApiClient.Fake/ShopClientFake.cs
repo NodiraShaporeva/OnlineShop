@@ -113,4 +113,9 @@ public class ShopClientFake: IShopClient
     {
         throw new NotImplementedException();
     }
+
+    public Task<Account> GetAccount(CancellationToken cancellationToken=default)
+    {
+        throw new NotImplementedException();
+    }
 }

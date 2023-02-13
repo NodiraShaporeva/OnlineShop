@@ -27,7 +27,7 @@ public class AccountController : ControllerBase
     {
         try
         {
-            var (account, token) = await _service.Register(request.Name, request.Email, request.Password, cancellationToken);
+            var (account, token) = await _service.Register(request.Name, request.Email, request.Password, cancellationToken); 
             return new LogInResponse(token);
             
         }

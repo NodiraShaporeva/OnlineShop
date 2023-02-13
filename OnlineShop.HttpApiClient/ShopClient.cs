@@ -92,9 +92,9 @@ namespace OnlineShop.HttpApiClient
             _httpClient.DefaultRequestHeaders.Authorization = header;
         }
 
-        // public static async Task<Account?> GetAccount()
-        // {
-        //     throw new NotImplementedException();
-        // }
+        public Task<Account> GetAccount(CancellationToken cancellationToken=default)
+        {
+            return _httpClient.GetFromJsonAsync<Account>($"{_host}/accounts/get_account", cancellationToken: cancellationToken)!;
+        }
     }
 }

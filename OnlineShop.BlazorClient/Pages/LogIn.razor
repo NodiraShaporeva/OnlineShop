@@ -28,6 +28,6 @@
     {
         var response = await ShopClient.LogIn(_request);
         await LocalStorage.SetItemAsStringAsync("token", response.Token);
-        NavigationManager.NavigateTo("Account");
+        NavigationManager.NavigateTo("accounts/Account");
     }
 }

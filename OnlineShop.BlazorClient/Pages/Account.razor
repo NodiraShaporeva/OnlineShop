@@ -1,6 +1,9 @@
-﻿@page "/Account"
+﻿@page "/accounts/Account"
 @using OnlineShop.HttpApiClient
+
 @inherits AppComponentBase
+
+@inject IShopClient ShopClient
 
 <h3>Аккаунт</h3>
 <br/>Имя: @_account?.Name
@@ -9,9 +12,9 @@
 @code {
 	private Domain.Entities.Account? _account;
 
-	// protected override async Task OnInitializedAsync()
-	// {
-	// 	await base.OnInitializedAsync();
-	// 	_account = await ShopClient.GetAccount();
-	// }
+	protected override async Task OnInitializedAsync()
+	{
+		await base.OnInitializedAsync();
+		_account = await ShopClient.GetAccount();
+	}
 }
