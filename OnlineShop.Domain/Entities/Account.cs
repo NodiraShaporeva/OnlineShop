@@ -2,7 +2,7 @@ namespace OnlineShop.Domain.Entities;
 
 public record Account : IEntity
 {
-    private Account()
+    public Account()
     {
         
     }
