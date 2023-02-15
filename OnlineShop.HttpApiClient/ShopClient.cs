@@ -97,9 +97,11 @@ namespace OnlineShop.HttpApiClient
             return _httpClient.GetFromJsonAsync<Account>($"{_host}/accounts/get_account", cancellationToken: cancellationToken)!;
         }
 
-        public Task<Cart?> GetCart()
+        public async Task<Cart?> GetCart()
         {
-            throw new NotImplementedException();
+            var uri = $"{_host}/carts/get";
+            var response = await _httpClient.GetFromJsonAsync<Cart>(uri);
+            return response!;
         }
     }
 }

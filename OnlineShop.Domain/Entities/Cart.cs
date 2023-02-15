@@ -2,6 +2,10 @@
 
 public record Cart: IEntity
 {
+    public Cart()
+    {
+        
+    }
     public int ItemCount => Items.Count;
     public Guid AccountId { get; set; }
 
