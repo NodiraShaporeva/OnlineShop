@@ -1,0 +1,25 @@
+﻿@page "/Cart"
+
+@using OnlineShop.HttpApiClient
+@inherits AppComponentBase
+
+@inject NavigationManager NavigationManager
+@inject IShopClient ShopClient
+
+<h3>Корзина</h3>
+Товаров в корзине: @_cart?.ItemCount
+
+@code {
+	private Domain.Entities.Cart? _cart;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await base.OnInitializedAsync();
+	// if (!Authorized)
+	// {
+	// 	NavigationManager.NavigateTo("LogIn");
+	// }
+		_cart = await ShopClient.GetCart();
+	}
+
+}

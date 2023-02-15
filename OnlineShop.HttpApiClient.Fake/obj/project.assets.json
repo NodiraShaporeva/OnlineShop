@@ -1,0 +1,125 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "OnlineShop.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/OnlineShop.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OnlineShop.Domain.dll": {}
+        }
+      },
+      "OnlineShop.HttpApiClient/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "OnlineShop.Domain": "1.0.0",
+          "OnlineShop.HttpModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OnlineShop.HttpApiClient.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OnlineShop.HttpApiClient.dll": {}
+        }
+      },
+      "OnlineShop.HttpModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/OnlineShop.HttpModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OnlineShop.HttpModels.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OnlineShop.Domain/1.0.0": {
+      "type": "project",
+      "path": "../OnlineShop.Domain/OnlineShop.Domain.csproj",
+      "msbuildProject": "../OnlineShop.Domain/OnlineShop.Domain.csproj"
+    },
+    "OnlineShop.HttpApiClient/1.0.0": {
+      "type": "project",
+      "path": "../OnlineShop.HttpApiClient/OnlineShop.HttpApiClient.csproj",
+      "msbuildProject": "../OnlineShop.HttpApiClient/OnlineShop.HttpApiClient.csproj"
+    },
+    "OnlineShop.HttpModels/1.0.0": {
+      "type": "project",
+      "path": "../OnlineShop.HttpModels/OnlineShop.HttpModels.csproj",
+      "msbuildProject": "../OnlineShop.HttpModels/OnlineShop.HttpModels.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "OnlineShop.HttpApiClient >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\NODIRA\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient.Fake\\OnlineShop.HttpApiClient.Fake.csproj",
+      "projectName": "OnlineShop.HttpApiClient.Fake",
+      "projectPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient.Fake\\OnlineShop.HttpApiClient.Fake.csproj",
+      "packagesPath": "C:\\Users\\NODIRA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient.Fake\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\NODIRA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient\\OnlineShop.HttpApiClient.csproj": {
+              "projectPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient\\OnlineShop.HttpApiClient.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

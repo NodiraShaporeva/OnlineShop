@@ -1,0 +1,180 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient\\OnlineShop.HttpApiClient.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.Domain\\OnlineShop.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.Domain\\OnlineShop.Domain.csproj",
+        "projectName": "OnlineShop.Domain",
+        "projectPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.Domain\\OnlineShop.Domain.csproj",
+        "packagesPath": "C:\\Users\\NODIRA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\NODIRA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient\\OnlineShop.HttpApiClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient\\OnlineShop.HttpApiClient.csproj",
+        "projectName": "OnlineShop.HttpApiClient",
+        "projectPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient\\OnlineShop.HttpApiClient.csproj",
+        "packagesPath": "C:\\Users\\NODIRA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpApiClient\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\NODIRA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.Domain\\OnlineShop.Domain.csproj": {
+                "projectPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.Domain\\OnlineShop.Domain.csproj"
+              },
+              "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpModels\\OnlineShop.HttpModels.csproj": {
+                "projectPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpModels\\OnlineShop.HttpModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpModels\\OnlineShop.HttpModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpModels\\OnlineShop.HttpModels.csproj",
+        "projectName": "OnlineShop.HttpModels",
+        "projectPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpModels\\OnlineShop.HttpModels.csproj",
+        "packagesPath": "C:\\Users\\NODIRA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NODIRA\\RiderProjects\\OnlineShop\\OnlineShop.HttpModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\NODIRA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

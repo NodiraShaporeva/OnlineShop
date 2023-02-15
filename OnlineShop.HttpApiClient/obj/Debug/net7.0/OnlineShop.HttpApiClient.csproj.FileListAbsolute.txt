@@ -1,0 +1,17 @@
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\bin\Debug\net7.0\OnlineShop.HttpApiClient.deps.json
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\bin\Debug\net7.0\OnlineShop.HttpApiClient.dll
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\bin\Debug\net7.0\OnlineShop.HttpApiClient.pdb
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\bin\Debug\net7.0\OnlineShop.Domain.dll
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\bin\Debug\net7.0\OnlineShop.HttpModels.dll
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\bin\Debug\net7.0\OnlineShop.Domain.pdb
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\bin\Debug\net7.0\OnlineShop.HttpModels.pdb
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\OnlineShop.HttpApiClient.csproj.AssemblyReference.cache
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\OnlineShop.HttpApiClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\OnlineShop.HttpApiClient.AssemblyInfoInputs.cache
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\OnlineShop.HttpApiClient.AssemblyInfo.cs
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\OnlineShop.HttpApiClient.csproj.CoreCompileInputs.cache
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\OnlineShop.HttpApiClient.csproj.CopyComplete
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\OnlineShop.HttpApiClient.dll
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\refint\OnlineShop.HttpApiClient.dll
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\OnlineShop.HttpApiClient.pdb
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpApiClient\obj\Debug\net7.0\ref\OnlineShop.HttpApiClient.dll

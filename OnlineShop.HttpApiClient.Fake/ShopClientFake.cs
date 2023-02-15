@@ -118,4 +118,9 @@ public class ShopClientFake: IShopClient
     {
         throw new NotImplementedException();
     }
+
+    public Task<Cart?> GetCart()
+    {
+        throw new NotImplementedException();
+    }
 }

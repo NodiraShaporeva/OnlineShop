@@ -1,0 +1,12 @@
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\bin\Debug\net7.0\OnlineShop.HttpModels.deps.json
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\bin\Debug\net7.0\OnlineShop.HttpModels.dll
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\bin\Debug\net7.0\OnlineShop.HttpModels.pdb
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\OnlineShop.HttpModels.csproj.AssemblyReference.cache
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\OnlineShop.HttpModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\OnlineShop.HttpModels.AssemblyInfoInputs.cache
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\OnlineShop.HttpModels.AssemblyInfo.cs
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\OnlineShop.HttpModels.csproj.CoreCompileInputs.cache
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\OnlineShop.HttpModels.dll
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\refint\OnlineShop.HttpModels.dll
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\OnlineShop.HttpModels.pdb
+C:\Users\NODIRA\RiderProjects\OnlineShop\OnlineShop.HttpModels\obj\Debug\net7.0\ref\OnlineShop.HttpModels.dll
