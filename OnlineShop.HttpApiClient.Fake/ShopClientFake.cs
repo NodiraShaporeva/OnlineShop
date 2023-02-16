@@ -109,7 +109,7 @@ public class ShopClientFake: IShopClient
         throw new NotImplementedException();
     }
 
-    public void SetAuthToken(string token)
+    public void SetAuthToken(string token, CancellationToken cancellationToken=default)
     {
         throw new NotImplementedException();
     }
@@ -119,7 +119,7 @@ public class ShopClientFake: IShopClient
         throw new NotImplementedException();
     }
 
-    public Task<Cart?> GetCart()
+    public Task<Cart?> GetCart(CancellationToken cancellationToken=default)
     {
         throw new NotImplementedException();
     }

@@ -12,12 +12,12 @@ public class CartController : ControllerBase
 {
     private readonly CartService _cartService;
 
-    public CartController(CartService cartService)
+    public CartController(CartService cartService, CancellationToken cancellationToken)
     {
-        _cartService = cartService ?? throw new ArgumentNullException(nameof(cartService));
+        _cartService = cartService;
     }
     [HttpGet("get")]
-    public Task<Cart> GetCart(Guid accountId)
+    public Task<Cart> GetCart(Guid accountId, CancellationToken cancellationToken)
     {
         return _cartService.GetCartForAccount(accountId);
     }

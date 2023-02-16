@@ -11,7 +11,7 @@ public class ProductController : ControllerBase
 
     public ProductController(IProductRepository productRepository)
     {
-        _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+        _productRepository = productRepository;
     }
 
     [HttpGet("get_all")]
@@ -31,21 +31,18 @@ public class ProductController : ControllerBase
     [HttpPost("add")]
     public async Task AddProduct(Product product, CancellationToken cancellationToken = default)
     {
-        if (product == null) throw new ArgumentNullException(nameof(product));
         await _productRepository.Add(product, cancellationToken);
     }
 
     [HttpPut("update")]
     public async Task Edit(Product product, CancellationToken cancellationToken = default)
     {
-        if (product == null) throw new ArgumentNullException(nameof(product));
         await _productRepository.Update(product, cancellationToken);
     }
 
     [HttpPost("delete")]
     public async Task DeleteProduct(Product product, CancellationToken cancellationToken = default)
     {
-        if (product == null) throw new ArgumentNullException(nameof(product));
         await _productRepository.Delete(product, cancellationToken);
     }
 }

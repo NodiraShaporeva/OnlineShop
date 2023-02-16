@@ -1,6 +1,9 @@
 namespace OnlineShop.HttpModels.Response;
 
-public class ErrorResponse
+public record ErrorResponse(string Message)
 {
-    
+    public override string ToString()
+    {
+        return $"{{Message = {Message}}}";
+    }
 }

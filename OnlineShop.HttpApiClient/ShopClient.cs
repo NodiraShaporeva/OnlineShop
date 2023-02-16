@@ -63,7 +63,7 @@ namespace OnlineShop.HttpApiClient
             responseMessage.EnsureSuccessStatusCode();
             
             var response = await responseMessage.Content.ReadFromJsonAsync<LogInResponse>(cancellationToken: cancellationToken);
-            SetAuthToken(response?.Token!);
+            SetAuthToken(response?.Token!, cancellationToken);
             return response!;
         }
 
@@ -81,11 +81,11 @@ namespace OnlineShop.HttpApiClient
             responseMessage.EnsureSuccessStatusCode();
 
             var response = await responseMessage.Content.ReadFromJsonAsync<LogInResponse>(cancellationToken: cancellationToken);
-            SetAuthToken(response?.Token!);
+            SetAuthToken(response?.Token!, cancellationToken);
             return response!;
         }
 
-        public void SetAuthToken(string token)
+        public void SetAuthToken(string token, CancellationToken cancellationToken = default)
         {
             if (token == null) throw new ArgumentNullException(nameof(token));
             var header = new AuthenticationHeaderValue("Bearer", token);
@@ -97,10 +97,10 @@ namespace OnlineShop.HttpApiClient
             return _httpClient.GetFromJsonAsync<Account>($"{_host}/accounts/get_account", cancellationToken: cancellationToken)!;
         }
 
-        public async Task<Cart?> GetCart()
+        public async Task<Cart?> GetCart(CancellationToken cancellationToken = default)
         {
             var uri = $"{_host}/carts/get";
-            var response = await _httpClient.GetFromJsonAsync<Cart>(uri);
+            var response = await _httpClient.GetFromJsonAsync<Cart>(uri, cancellationToken: cancellationToken);
             return response!;
         }
     }

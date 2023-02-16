@@ -10,11 +10,17 @@ using OnlineShop.Domain;
 using OnlineShop.Domain.RepositoriesInterfaces;
 using OnlineShop.Domain.Services;
 using OnlineShop.WebApi.Configurations;
+using OnlineShop.WebApi.Filters;
 using OnlineShop.WebApi.Middleware;
 using OnlineShop.WebApi.Services;
 using OnlineShop.WebApi.TokenHelpers;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<CentralizedExceptionHandlingFilter>(order: 0);
+});
 
 builder.Services.AddControllers();
 builder.Services.AddCors();
