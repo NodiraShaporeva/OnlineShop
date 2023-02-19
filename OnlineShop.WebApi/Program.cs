@@ -20,6 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<CentralizedExceptionHandlingFilter>(order: 0);
+    options.Filters.Add<ApiKeyFilter>();
 });
 
 builder.Services.AddControllers();
