@@ -55,14 +55,20 @@ namespace OnlineShop.HttpApiClient
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task<LogInResponse> Register(RegisterRequest request, CancellationToken cancellationToken = default)
+        public async Task<RegisterResponse> Register(RegisterRequest request,
+            CancellationToken cancellationToken = default)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
             string uri = $"{_host}/accounts/register";
             var responseMessage = await _httpClient.PostAsJsonAsync(uri, request, cancellationToken);
-            responseMessage.EnsureSuccessStatusCode();
+            // responseMessage.EnsureSuccessStatusCode();
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                var error = await responseMessage.Content.ReadAsStringAsync(cancellationToken);
+                throw new HttpRequestException($"Status code: {responseMessage.StatusCode} " + error);
+            }
             
-            var response = await responseMessage.Content.ReadFromJsonAsync<LogInResponse>(cancellationToken: cancellationToken);
+            var response = await responseMessage.Content.ReadFromJsonAsync<RegisterResponse>(cancellationToken: cancellationToken);
             SetAuthToken(response?.Token!, cancellationToken);
             return response!;
         }
@@ -78,7 +84,12 @@ namespace OnlineShop.HttpApiClient
                 var json = await responseMessage.Content.ReadAsStringAsync(cancellationToken);
                 throw new Exception(json);
             }
-            responseMessage.EnsureSuccessStatusCode();
+            // responseMessage.EnsureSuccessStatusCode();
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                var error = await responseMessage.Content.ReadAsStringAsync(cancellationToken);
+                throw new HttpRequestException($"Status code: {responseMessage.StatusCode} " + error);
+            }
 
             var response = await responseMessage.Content.ReadFromJsonAsync<LogInResponse>(cancellationToken: cancellationToken);
             SetAuthToken(response?.Token!, cancellationToken);

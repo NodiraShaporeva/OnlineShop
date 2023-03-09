@@ -27,4 +27,9 @@
       <ProjectReference Include="..\OnlineShop.HttpModels\OnlineShop.HttpModels.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="GreatShop.WebApi.IntegrationTest" />
+    </ItemGroup>
+
+
 </Project>

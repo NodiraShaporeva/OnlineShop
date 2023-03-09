@@ -151,3 +151,5 @@ app.MapControllers();
 app.UseMiddleware<PagesTransitionsMiddleware>();
 
 app.Run();
+
+public partial class Program { }

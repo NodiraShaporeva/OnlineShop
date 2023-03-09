@@ -99,7 +99,7 @@ public class ShopClientFake: IShopClient
         throw new NotImplementedException();
     }
 
-    public Task<LogInResponse> Register(RegisterRequest request, CancellationToken cancellationToken = default)
+    public Task<RegisterResponse> Register(RegisterRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
