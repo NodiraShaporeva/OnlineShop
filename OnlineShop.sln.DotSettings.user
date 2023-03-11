@@ -1,23 +1,20 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\NODIRA\AppData\Local\JetBrains\Rider2022.3\resharper-host\temp\Rider\vAny\CoverageData\_OnlineShop.1601113178\Snapshot\snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2dd63091_002Db3cf_002D4089_002Db10b_002D5471ae3a40be/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="One_product_added_to_catalog" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5aa7a4c5_002Dcc3f_002D4ac2_002D9f20_002Dbe9d0373bc00/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AccountEndpointsTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::736E8FD4-E812-4D80-9762-03BC6CCA5A2C::net7.0::OnlineShop.Domain.Test.CartTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::51C348D9-E626-4426-9D7B-52FCA3EBC402::net7.0::OnlineShop.WebApi.IntegrationTest.AccountEndpointsTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6fd8c56a_002D7cff_002D4bd3_002Da19e_002D934939ba69c4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Register_new_user_succeeded" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6aae13a3_002D2f44_002D48e9_002Db6dd_002D4bd0e167f7e9/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Login_user_with_invalid_password_gives_error" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::51C348D9-E626-4426-9D7B-52FCA3EBC402::net7.0::OnlineShop.WebApi.IntegrationTest.AccountEndpointsTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6fd8c56a_002D7cff_002D4bd3_002Da19e_002D934939ba69c4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Register_new_user_succeeded" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::736E8FD4-E812-4D80-9762-03BC6CCA5A2C::net7.0::OnlineShop.Domain.Test.AccountServiceTests.Register_new_user_succeeded&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::51C348D9-E626-4426-9D7B-52FCA3EBC402::net7.0::OnlineShop.WebApi.IntegrationTest.AccountEndpointsTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f3d0e8b1_002D4d04_002D4340_002Db9f5_002Da545f73d762c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="One_product_added_to_catalog #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::736E8FD4-E812-4D80-9762-03BC6CCA5A2C::net7.0::OnlineShop.Domain.Test.CartTests.New_cart_is_empty&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::736E8FD4-E812-4D80-9762-03BC6CCA5A2C::net7.0::OnlineShop.Domain.Test.CartTests.New_item_is_added_to_cart&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::736E8FD4-E812-4D80-9762-03BC6CCA5A2C::net7.0::OnlineShop.Domain.Test.CartTests.Adding_empty_product_is_impossible&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::736E8FD4-E812-4D80-9762-03BC6CCA5A2C::net7.0::OnlineShop.Domain.Test.CartTests.Adding_existed_product_to_cart_changes_item_quantity&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::736E8FD4-E812-4D80-9762-03BC6CCA5A2C::net7.0::OnlineShop.Domain.Test.AccountServiceTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	</wpf:ResourceDictionary>

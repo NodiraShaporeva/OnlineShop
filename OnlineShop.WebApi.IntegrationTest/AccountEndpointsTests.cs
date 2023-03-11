@@ -3,6 +3,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using OnlineShop.HttpApiClient;
 using OnlineShop.HttpModels.Request;
+using Xunit.Abstractions;
 
 namespace OnlineShop.WebApi.IntegrationTest;
 
@@ -33,7 +34,7 @@ public class AccountEndpointsTests : IClassFixture<CustomWebApplicationFactory<P
     }
 
     [Fact]
-    public async void Register_user_with_occupied_email_gives_error()
+    public async void Register_user_with_known_email_gives_error()
     {
         var httpClient = _factory.CreateClient();
         var client = new ShopClient(httpClient: httpClient);
