@@ -22,11 +22,33 @@ builder.Services.AddControllers(options =>
     options.Filters.Add<CentralizedExceptionHandlingFilter>(order: 0);
     options.Filters.Add<ApiKeyFilter>();
 });
-
-builder.Services.AddControllers();
-builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+        {
+            new OpenApiSecurityScheme {
+                Reference = new OpenApiReference {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
+
+builder.Services.AddCors();
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<ICartRepository, CartRepository>();
@@ -46,11 +68,6 @@ JwtConfig jwtConfig = builder.Configuration
 // value cannot be null
 // в противном случае может возникнуть проблема при запуске приложения
 // при отсутствии пользовательских секретов с JWT Token
-if (jwtConfig == null)
-{
-    throw new ArgumentNullException(nameof(jwtConfig));
-}
-builder.Services.AddSingleton(jwtConfig);
 builder.Services.AddSingleton(jwtConfig);
 
 builder.Services.AddAuthentication(options =>
@@ -84,28 +101,6 @@ builder.Services.AddHttpLogging(options =>
                             | HttpLoggingFields.ResponseHeaders;
 });
 
-builder.Services.AddSwaggerGen(c =>
-{
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
-    });
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-        {
-            new OpenApiSecurityScheme {
-                Reference = new OpenApiReference {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            Array.Empty<string>()
-        }
-    });
-});
 
 var app = builder.Build();
 

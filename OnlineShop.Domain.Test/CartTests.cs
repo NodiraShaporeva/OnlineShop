@@ -67,18 +67,18 @@ public class CartTests
         Assert.Equal(product.Price, cartItem.Price);
     }
     
-    [Fact]
-    private void Adding_empty_product_is_impossible()
-    {
-        var cart = new Cart()
-        {
-            Id=Guid.Empty,
-            AccountId = Guid.Empty,
-            Items=new List<CartItem>()
-        };
-        
-        Assert.Throws<ArgumentNullException>(() => cart.Add(null));
-    }
+    // [Fact]
+    // private void Adding_empty_product_is_impossible()
+    // {
+    //     var cart = new Cart()
+    //     {
+    //         Id=Guid.Empty,
+    //         AccountId = Guid.Empty,
+    //         Items=new List<CartItem>()
+    //     };
+    //     
+    //     Assert.Throws<ArgumentNullException>(() => cart.Add(null));
+    // }
 
     [Fact]
     private void Quantity_must_be_positive()

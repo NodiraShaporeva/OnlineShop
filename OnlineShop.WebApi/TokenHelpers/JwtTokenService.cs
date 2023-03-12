@@ -20,8 +20,10 @@ public class JwtTokenService : ITokenService
 
     public string GenerateToken(Account account)
     {
+        if (account == null) throw new ArgumentNullException(nameof(account));
         IClock clock = new Clock();
         var now = clock.GetCurrentTime();
+
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[]
@@ -36,6 +38,7 @@ public class JwtTokenService : ITokenService
                 SecurityAlgorithms.HmacSha256Signature
             )
         };
+
         var tokenHandler = new JwtSecurityTokenHandler();
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);

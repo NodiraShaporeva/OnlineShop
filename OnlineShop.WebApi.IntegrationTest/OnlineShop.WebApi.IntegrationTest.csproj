@@ -4,7 +4,6 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PreserveCompilationContext>true</PreserveCompilationContext>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
@@ -27,9 +26,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OnlineShop.Data\OnlineShop.Data.csproj" />
       <ProjectReference Include="..\OnlineShop.HttpApiClient\OnlineShop.HttpApiClient.csproj" />
-      <ProjectReference Include="..\OnlineShop.HttpModels\OnlineShop.HttpModels.csproj" />
+      <ProjectReference Include="..\OnlineShop.WebApi\OnlineShop.WebApi.csproj" />
     </ItemGroup>
 
 </Project>

@@ -26,10 +26,10 @@
     <ItemGroup>
       <ProjectReference Include="..\OnlineShop.Data\OnlineShop.Data.csproj" />
       <ProjectReference Include="..\OnlineShop.HttpModels\OnlineShop.HttpModels.csproj" />
-    </ItemGroup>
+      <ProjectReference Include="..\OnlineShop.Domain\OnlineShop.Domain.csproj" />    </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="GreatShop.WebApi.IntegrationTest" />
+        <InternalsVisibleTo Include="OnlineShop.WebApi.IntegrationTest" />
     </ItemGroup>
 
 

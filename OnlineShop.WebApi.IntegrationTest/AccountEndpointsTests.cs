@@ -1,6 +1,5 @@
 ﻿using Bogus;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 using OnlineShop.HttpApiClient;
 using OnlineShop.HttpModels.Request;
 using Xunit.Abstractions;
